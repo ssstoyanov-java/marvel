@@ -1,0 +1,296 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+tags:
+  - name: Character API
+    description: Provides methods for working with characters
+  - name: Comic API
+    description: Provides methods for working with comics
+paths:
+  /v1/public/comics:
+    get:
+      tags:
+        - Comic API
+      summary: Return all comics
+      operationId: getIterableComics
+      parameters:
+        - name: pageable
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Pageable'
+      responses:
+        "200":
+          description: Comics found
+          content:
+            application/json:
+              schema:
+                type: object
+    put:
+      tags:
+        - Comic API
+      summary: Update an existing comic
+      operationId: updateComic
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comic'
+        required: true
+      responses:
+        "404":
+          description: Comic not exist
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Comic'
+        "200":
+          description: Comic updated
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Comic'
+    post:
+      tags:
+        - Comic API
+      summary: Insert a new comic
+      operationId: createComic
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comic'
+        required: true
+      responses:
+        "422":
+          description: Comic already exist
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Comic'
+        "201":
+          description: Comic created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Comic'
+  /v1/public/characters:
+    get:
+      tags:
+        - Character API
+      summary: Return all characters
+      operationId: getIterableComicCharacters
+      parameters:
+        - name: pageable
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Pageable'
+      responses:
+        "200":
+          description: Characters found
+          content:
+            application/json:
+              schema:
+                type: object
+    put:
+      tags:
+        - Character API
+      summary: Update an existing character
+      operationId: updateCharacter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Character'
+        required: true
+      responses:
+        "200":
+          description: Character updated
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Character'
+        "404":
+          description: Character not exist
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Character'
+    post:
+      tags:
+        - Character API
+      summary: Insert a new character
+      operationId: createCharacter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Character'
+        required: true
+      responses:
+        "422":
+          description: Character already exist
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Character'
+        "201":
+          description: Character created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Character'
+  /v1/public/comics/{id}:
+    get:
+      tags:
+        - Comic API
+      summary: Return comic by id
+      operationId: getComicById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Comic found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comic'
+        "404":
+          description: Comic not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comic'
+  /v1/public/comics/{id}/characters:
+    get:
+      tags:
+        - Comic API
+      summary: Return characters by comic id
+      operationId: getComicsByCharacterId
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pageable
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Pageable'
+      responses:
+        "200":
+          description: Characters found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Character'
+        "404":
+          description: Characters not found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Character'
+  /v1/public/characters/{id}:
+    get:
+      tags:
+        - Character API
+      summary: Return character by id
+      operationId: getCharacterById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Character found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+        "404":
+          description: Character not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+  /v1/public/characters/{id}/comics:
+    get:
+      tags:
+        - Character API
+      summary: Return comics by character id
+      operationId: getComicsByCharacterId_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pageable
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Pageable'
+      responses:
+        "404":
+          description: Comics not found
+          content:
+            application/json:
+              schema:
+                type: object
+        "200":
+          description: Comics found
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas:
+    Character:
+      type: object
+      properties:
+        id:
+          type: string
+        comics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comic'
+    Comic:
+      type: object
+      properties:
+        id:
+          type: string
+        characters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Character'
+    Pageable:
+      type: object
+      properties:
+        page:
+          minimum: 0
+          type: integer
+          format: int32
+        size:
+          minimum: 1
+          type: integer
+          format: int32
+        sort:
+          type: array
+          items:
+            type: string

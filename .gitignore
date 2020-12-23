@@ -6,8 +6,4 @@ build
 .idea
 
 ### Other ###
-HELP.md
-gradlew.bat
-api-docs.yaml
 logs
-task.pdf

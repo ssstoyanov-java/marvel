@@ -1,0 +1,2 @@
+FROM  gradle:jre14
+EXPOSE 8080 27017

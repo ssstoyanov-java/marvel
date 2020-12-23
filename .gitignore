@@ -1,0 +1,15 @@
+### Gradle ###
+.gradle
+build
+
+### IntelliJ IDEA ###
+.idea
+.run
+
+### Other ###
+HELP.md
+gradlew.bat
+api-docs.yaml
+logs
+Dockerfile
+task.pdf

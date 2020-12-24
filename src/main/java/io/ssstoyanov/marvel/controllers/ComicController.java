@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -42,6 +43,19 @@ public class ComicController {
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<Page<Comic>> getPageOfComics(Pageable pageable) {
         return new ResponseEntity<>(comicRepository.findAll(pageable), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Return comics by title",
+            description = "Returns comics, if exist. Search in title field")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Comics probably found"),
+            @ApiResponse(responseCode = "404", description = "Comics not found")
+    })
+    @RequestMapping(value = "/search", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<Page<Comic>> getCharacterByName(@RequestParam(value = "title") String title, Pageable page) {
+        return comicRepository.findComicsByTitleContains(title, page)
+                .map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @Operation(summary = "Return comic by id")

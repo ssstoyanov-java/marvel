@@ -51,9 +51,9 @@ public class CharactersController {
             @ApiResponse(responseCode = "200", description = "Character probably found"),
             @ApiResponse(responseCode = "404", description = "Character not found")
     })
-    @RequestMapping(value = "/search", method = RequestMethod.GET, produces = "application/json", params = {"name"})
-    public ResponseEntity<Character> getCharacterByName(@RequestParam(value = "name") String name) {
-        return characterRepository.findByNameAndDescriptionContains(name, name)
+    @RequestMapping(value = "/search", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<Page<Character>> getCharacterByName(@RequestParam(value = "name") String name, Pageable page) {
+        return characterRepository.findByNameAndDescriptionContains(name, name, page)
                 .map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }

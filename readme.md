@@ -17,10 +17,11 @@ or by dint of configuration files from `.idea/runConfiguration` via IDEA
 - Java 11
 - Spring Boot
 - MongoDB
-- Gradle
-- Swagger
-- Docker(—compose)
+
 
 #### Tools
 
 - IntelliJ IDEA Ultimate
+- Gradle
+- Swagger
+- Docker(-compose)

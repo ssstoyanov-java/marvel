@@ -38,7 +38,7 @@ dependencies {
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    runtimeOnly 'org.mongodb:mongodb-driver:+'
+    implementation 'org.mongodb:mongo-java-driver:+'
 }
 
 test {

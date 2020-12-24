@@ -1,19 +1,15 @@
 spring:
   application:
     name: Marvel
-  datasource:
-    url: mongodb://localhost:27017/marvel
-    username: mongodb
-    password: foxinsocks
-  devtools:
-    livereload:
-      enabled: true
-    add-properties: true
-  profiles:
-    active: dev
+  data:
+    mongodb:
+      host: ${MONGO_DB_HOST}
+      port: ${MONGO_DB_PORT}
+      database: ${MONGO_DB_DATABASE}
+#      username: ${MONGO_DB_USERNAME}
+#      password: ${MONGO_DB_PASSWORD}
 server:
-  port: ${port:8080}
-  address: 127.0.0.1
+  port: 8080
   http2:
     enabled: true
   error:
@@ -29,7 +25,5 @@ springdoc:
     path: /swagger.html
 logging:
   level:
-    root: debug
+    root: info
     org.springframework.web: off
-  file:
-    name: logs/application-debug.log

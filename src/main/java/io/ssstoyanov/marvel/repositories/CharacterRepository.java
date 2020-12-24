@@ -10,8 +10,8 @@ import java.util.Optional;
 
 @Repository
 public interface CharacterRepository extends MongoRepository<Character, Long> {
-    Optional<Page<Character>> findCharactersByComicsId(Long id, Pageable pageable);
+    Optional<Page<Character>> findCharactersByComicsId(Long id, Pageable page);
 
-    Optional<Character> findByNameAndDescriptionContains(String name, String description);
+    Optional<Page<Character>> findByNameAndDescriptionContains(String name, String description, Pageable page);
 }
 

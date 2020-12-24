@@ -11,4 +11,6 @@ import java.util.Optional;
 @Repository
 public interface ComicRepository extends MongoRepository<Comic, Long> {
     Optional<Page<Comic>> findComicsByCharactersId(Long id, Pageable page);
+
+    Optional<Page<Comic>> findComicsByTitleContains(String title, Pageable page);
 }

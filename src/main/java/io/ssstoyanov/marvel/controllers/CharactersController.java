@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 @Tag(name = "Character API", description = "Provides methods for working with characters")
 @RequestMapping("/v1/public/characters")
@@ -31,16 +35,28 @@ public class CharactersController {
         this.comicRepository = comicRepository;
     }
 
-    @Operation(summary = "Return all characters")
+    @Operation(summary = "Return all characters",
+            description = "Returns a page with all characters, filtering by the parameters size, page, sort is available")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Characters found")
     })
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<Iterable<Character>> getIterableComicCharacters(Pageable pageable) {
+    public ResponseEntity<Page<Character>> getPageOfCharacters(Pageable pageable) {
         return new ResponseEntity<>(characterRepository.findAll(pageable), HttpStatus.OK);
-        // TODO: 23/12/2020 add filtering
     }
 
+    @Operation(summary = "Return character by name",
+            description = "Returns character, if exist. Search in name and description field")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Character probably found"),
+            @ApiResponse(responseCode = "404", description = "Character not found")
+    })
+    @RequestMapping(value = "/search", method = RequestMethod.GET, produces = "application/json", params = {"name"})
+    public ResponseEntity<Character> getCharacterByName(@RequestParam(value = "name") String name) {
+        return characterRepository.findByNameAndDescriptionContains(name, name)
+                .map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 
     @Operation(summary = "Return character by id")
     @ApiResponses(value = {
@@ -54,15 +70,17 @@ public class CharactersController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @Operation(summary = "Return comics by character id")
+    @Operation(summary = "Return comics by character id",
+            description = "Returns a page with all character comics, filtering by the parameters size, page, sort is available")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Comics found"),
             @ApiResponse(responseCode = "404", description = "Comics not found")
     })
     @RequestMapping(value = "/{id}/comics", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<Iterable<Comic>> getComicsByCharacterId(@PathVariable(value = "id") Long id, Pageable pageable) {
-        return new ResponseEntity<>(comicRepository.findComicsByCharactersId(id, pageable), HttpStatus.OK);
-        // TODO: 23/12/2020 add 404 logic 
+    public ResponseEntity<Page<Comic>> getComicsByCharacterId(@PathVariable(value = "id") Long id, Pageable pageable) {
+        return comicRepository.findComicsByCharactersId(id, pageable)
+                .map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @Transactional
@@ -72,7 +90,7 @@ public class CharactersController {
             @ApiResponse(responseCode = "422", description = "Character already exist")
     })
     @RequestMapping(value = "", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<Character> createCharacter(@RequestBody Character character) {
+    public ResponseEntity<Character> insertCharacter(@Valid @RequestBody Character character) {
         return characterRepository.existsById(character.getId()) ?
                 new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY) :
                 new ResponseEntity<>(characterRepository.save(character), HttpStatus.CREATED);
@@ -85,7 +103,7 @@ public class CharactersController {
             @ApiResponse(responseCode = "200", description = "Character updated")
     })
     @RequestMapping(value = "", method = RequestMethod.PUT, consumes = "application/json")
-    public ResponseEntity<Character> updateCharacter(@RequestBody Character character) {
+    public ResponseEntity<Character> updateCharacter(@Valid @RequestBody Character character) {
         return characterRepository.existsById(character.getId()) ?
                 new ResponseEntity<>(characterRepository.save(character), HttpStatus.OK) :
                 new ResponseEntity<>(HttpStatus.NOT_FOUND);

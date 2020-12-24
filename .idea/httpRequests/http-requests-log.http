@@ -1,0 +1,33 @@
+GET https://gateway.marvel.com/v1/public/comics/77001?ts=1&apikey=edcd51630315621ce02d8087302330bc&hash=09189b303a5e94492572513e8a3f5374
+Accept: application/json
+
+<> 2020-12-23T033322.200.json
+
+###
+
+GET https://gateway.marvel.com:443/v1/public/characters/1011198?ts=1&apikey=edcd51630315621ce02d8087302330bc&hash=09189b303a5e94492572513e8a3f5374
+Accept: application/json
+
+<> 2020-12-23T032729.200.json
+
+###
+
+GET https://gateway.marvel.com:443/v1/public/characters/1
+Accept: application/json
+
+<> 2020-12-23T025942.409.json
+
+###
+
+GET https://gateway.marvel.com:443/v1/public/characters/1?apikey=edcd51630315621ce02d8087302330bc
+
+<> 2020-12-23T025847.409.json
+
+###
+
+GET https://gateway.marvel.com:443/v1/public/characters/1?apikey=2f5985d523c39a4bafab71770a54e7e31b6c3911
+
+<> 2020-12-23T025826.401.json
+
+###
+

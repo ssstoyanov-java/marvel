@@ -1,0 +1,217 @@
+{
+  "code": 200,
+  "status": "Ok",
+  "copyright": "© 2020 MARVEL",
+  "attributionText": "Data provided by Marvel. © 2020 MARVEL",
+  "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. © 2020 MARVEL</a>",
+  "etag": "73fb233efbefa64f57b8ef3930ce1aa40ac7b8bb",
+  "data": {
+    "offset": 0,
+    "limit": 20,
+    "total": 1,
+    "count": 1,
+    "results": [
+      {
+        "id": 77001,
+        "digitalId": 52306,
+        "title": "Agents of Atlas (2019) #1",
+        "issueNumber": 1,
+        "variantDescription": "",
+        "description": null,
+        "modified": "2019-07-31T11:18:19-0400",
+        "isbn": "",
+        "upc": "75960609508700111",
+        "diamondCode": "JUN190881",
+        "ean": "",
+        "issn": "",
+        "format": "Comic",
+        "pageCount": 40,
+        "textObjects": [],
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/77001",
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/issue/77001/agents_of_atlas_2019_1?utm_campaign=apiRef&utm_source=edcd51630315621ce02d8087302330bc"
+          },
+          {
+            "type": "purchase",
+            "url": "http://comicstore.marvel.com/Agents-of-Atlas-1/digital-comic/52306?utm_campaign=apiRef&utm_source=edcd51630315621ce02d8087302330bc"
+          },
+          {
+            "type": "reader",
+            "url": "http://marvel.com/digitalcomics/view.htm?iid=52306&utm_campaign=apiRef&utm_source=edcd51630315621ce02d8087302330bc"
+          },
+          {
+            "type": "inAppLink",
+            "url": "https://applink.marvel.com/issue/52306?utm_campaign=apiRef&utm_source=edcd51630315621ce02d8087302330bc"
+          }
+        ],
+        "series": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/series/27624",
+          "name": "Agents of Atlas (2019)"
+        },
+        "variants": [
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/77779",
+            "name": "Agents of Atlas (2019) #1 (Variant)"
+          },
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/77871",
+            "name": "Agents of Atlas (2019) #1 (Variant)"
+          },
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/77869",
+            "name": "Agents of Atlas (2019) #1 (Variant)"
+          },
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/77870",
+            "name": "Agents of Atlas (2019) #1 (Variant)"
+          }
+        ],
+        "collections": [],
+        "collectedIssues": [],
+        "dates": [
+          {
+            "type": "onsaleDate",
+            "date": "2019-08-07T00:00:00-0400"
+          },
+          {
+            "type": "focDate",
+            "date": "2019-07-15T00:00:00-0400"
+          },
+          {
+            "type": "unlimitedDate",
+            "date": "2020-02-10T00:00:00-0500"
+          },
+          {
+            "type": "digitalPurchaseDate",
+            "date": "2019-08-07T00:00:00-0400"
+          }
+        ],
+        "prices": [
+          {
+            "type": "printPrice",
+            "price": 4.99
+          },
+          {
+            "type": "digitalPurchasePrice",
+            "price": 4.99
+          }
+        ],
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/50/5d404ebed84b5",
+          "extension": "jpg"
+        },
+        "images": [
+          {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/50/5d404ebed84b5",
+            "extension": "jpg"
+          }
+        ],
+        "creators": {
+          "available": 10,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/77001/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13180",
+              "name": "Federico Blee",
+              "role": "colorist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13005",
+              "name": "Dono Sanchez-Almara",
+              "role": "colorist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13033",
+              "name": "Nico Leon",
+              "role": "penciler"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/537",
+              "name": "Carlo Pagulayan",
+              "role": "penciler"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/536",
+              "name": "Greg Pak",
+              "role": "writer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/824",
+              "name": "Jeff Parker",
+              "role": "writer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/4600",
+              "name": "Mark Paniccia",
+              "role": "editor"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/8695",
+              "name": "Jason Paz",
+              "role": "inker"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/12974",
+              "name": "Vc Joe Sabino",
+              "role": "letterer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/12303",
+              "name": "Jung-Geun Yoon",
+              "role": "penciler (cover)"
+            }
+          ],
+          "returned": 10
+        },
+        "characters": {
+          "available": 4,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/77001/characters",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011198",
+              "name": "Agents of Atlas"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011227",
+              "name": "Amadeus Cho"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011105",
+              "name": "Jimmy Woo"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009577",
+              "name": "Shang-Chi"
+            }
+          ],
+          "returned": 4
+        },
+        "stories": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/77001/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/170874",
+              "name": "cover from New Agents of Atlas (2019) #1",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/170875",
+              "name": "story from New Agents of Atlas (2019) #1",
+              "type": "interiorStory"
+            }
+          ],
+          "returned": 2
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/77001/events",
+          "items": [],
+          "returned": 0
+        }
+      }
+    ]
+  }
+}

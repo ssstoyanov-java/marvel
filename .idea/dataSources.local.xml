@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MongoDB @ localhost" uuid="aa98ffb6-50fb-4b2f-88dc-ab5349e51d3f">
+      <database-info product="Mongo DB" version="3.6.8" jdbc-version="4.2" driver-name="MongoDB JDBC Driver" driver-version="1.9" dbms="MONGO" exact-version="3.6.8" exact-driver-version="1.9" />
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>mongodb</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema">
+            <name qname="@" />
+            <name qname="marvel" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
+  </component>
+</project>

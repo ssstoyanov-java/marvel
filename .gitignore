@@ -2,8 +2,5 @@
 .gradle
 build
 
-### IntelliJ IDEA ###
-.idea
-
 ### Other ###
 logs

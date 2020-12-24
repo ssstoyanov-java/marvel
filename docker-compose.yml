@@ -1,0 +1,35 @@
+version: "3"
+services:
+
+  mongodb:
+    image: mongo:latest
+    container_name: "mongodb"
+    command: --noauth
+    ports:
+      - 27017:27017
+    environment:
+      #      - MONGO_INITDB_ROOT_USERNAME=mongodb
+      #      - MONGO_INITDB_ROOT_PASSWORD=foxinsocks
+      - MONGO_INITDB_DATABASE=marvel
+    networks:
+      - mongo_net
+
+  marvel:
+    image: marvel
+    container_name: "marvel-application"
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongodb
+    networks:
+      - mongo_net
+    environment:
+      - MONGO_DB_HOST=172.17.0.1
+      - MONGO_DB_PORT=27017
+      #      - MONGO_DB_USERNAME=mongodb
+      #      - MONGO_DB_PASSWORD=foxinsocks
+      - MONGO_DB_DATABASE=marvel
+
+networks:
+  mongo_net:
+    driver: bridge

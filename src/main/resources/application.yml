@@ -24,6 +24,9 @@ server:
 springdoc:
   api-docs:
     enabled: true
+    path: /api-docs
+  swagger-ui:
+    path: /swagger.html
 logging:
   level:
     root: debug
